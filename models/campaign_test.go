@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 	"time"
 
@@ -156,7 +157,7 @@ func setupCampaignDependencies(b *testing.B, size int) {
 	group := Group{Name: "Test Group"}
 	// Create a large group of 5000 members
 	for i := 0; i < size; i++ {
-		group.Targets = append(group.Targets, Target{BaseRecipient: BaseRecipient{Email: fmt.Sprintf("test%d@example.com", i), FirstName: "User", LastName: fmt.Sprintf("%d", i)}})
+		group.Targets = append(group.Targets, Target{BaseRecipient: BaseRecipient{Email: fmt.Sprintf("test%d@example.com", i), FirstName: "User", LastName: strconv.Itoa(i)}})
 	}
 	group.UserId = 1
 	err := PostGroup(&group)
