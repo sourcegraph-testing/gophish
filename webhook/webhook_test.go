@@ -22,7 +22,7 @@ func newMockSender() *mockSender {
 	return ms
 }
 
-func (ms mockSender) Send(endPoint EndPoint, data interface{}) error {
+func (ms mockSender) Send(endPoint EndPoint, data any) error {
 	log.Println("[test] mocked 'Send' function")
 	return nil
 }
@@ -44,7 +44,7 @@ func TestSendMocked(t *testing.T) {
 func TestSendReal(t *testing.T) {
 	expectedSig := "004b36ca3fcbc01a08b17bf5d4a7e1aa0b10e14f55f3f8bd9acac0c7e8d2635d"
 	secret := "secret456"
-	data := map[string]interface{}{
+	data := map[string]any{
 		"key1": "val1",
 		"key2": "val2",
 		"key3": "val3",
@@ -71,7 +71,7 @@ func TestSendReal(t *testing.T) {
 			t.Fatalf("error reading JSON body from webhook request: %v", err)
 		}
 
-		var payload map[string]interface{}
+		var payload map[string]any
 		err = json.Unmarshal(body, &payload)
 		if err != nil {
 			t.Fatalf("error unmarshaling webhook payload: %v", err)

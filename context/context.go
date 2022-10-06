@@ -1,3 +1,4 @@
+//go:build go1.7
 // +build go1.7
 
 package context
@@ -9,12 +10,12 @@ import (
 )
 
 // Get retrieves a value from the request context
-func Get(r *http.Request, key interface{}) interface{} {
+func Get(r *http.Request, key any) any {
 	return r.Context().Value(key)
 }
 
 // Set stores a value on the request context
-func Set(r *http.Request, key, val interface{}) *http.Request {
+func Set(r *http.Request, key, val any) *http.Request {
 	if val == nil {
 		return r
 	}

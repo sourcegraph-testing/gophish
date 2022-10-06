@@ -173,7 +173,7 @@ func (as *AdminServer) registerRoutes() {
 
 type templateParams struct {
 	Title        string
-	Flashes      []interface{}
+	Flashes      []any
 	User         models.User
 	Token        string
 	Version      string
@@ -311,7 +311,7 @@ func (as *AdminServer) handleInvalidLogin(w http.ResponseWriter, r *http.Request
 	params := struct {
 		User    models.User
 		Title   string
-		Flashes []interface{}
+		Flashes []any
 		Token   string
 	}{Title: "Login", Token: csrf.Token(r)}
 	params.Flashes = session.Flashes()
@@ -357,7 +357,7 @@ func (as *AdminServer) Login(w http.ResponseWriter, r *http.Request) {
 	params := struct {
 		User    models.User
 		Title   string
-		Flashes []interface{}
+		Flashes []any
 		Token   string
 	}{Title: "Login", Token: csrf.Token(r)}
 	session := ctx.Get(r, "session").(*sessions.Session)

@@ -69,9 +69,9 @@ type Flash struct {
 
 // Response contains the attributes found in an API response
 type Response struct {
-	Message string      `json:"message"`
-	Success bool        `json:"success"`
-	Data    interface{} `json:"data"`
+	Message string `json:"message"`
+	Success bool   `json:"success"`
+	Data    any    `json:"data"`
 }
 
 // Copy of auth.GenerateSecureKey to prevent cyclic import with auth library

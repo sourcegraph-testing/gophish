@@ -35,7 +35,7 @@ const (
 
 // Sender represents a type which can send webhooks to an EndPoint
 type Sender interface {
-	Send(endPoint EndPoint, data interface{}) error
+	Send(endPoint EndPoint, data any) error
 }
 
 type defaultSender struct {
@@ -64,12 +64,12 @@ type EndPoint struct {
 }
 
 // Send sends data to a single EndPoint
-func Send(endPoint EndPoint, data interface{}) error {
+func Send(endPoint EndPoint, data any) error {
 	return senderInstance.Send(endPoint, data)
 }
 
 // SendAll sends data to multiple EndPoints
-func SendAll(endPoints []EndPoint, data interface{}) {
+func SendAll(endPoints []EndPoint, data any) {
 	for _, e := range endPoints {
 		go func(e EndPoint) {
 			senderInstance.Send(e, data)
@@ -78,7 +78,7 @@ func SendAll(endPoints []EndPoint, data interface{}) {
 }
 
 // Send contains the implementation of sending webhook to an EndPoint
-func (ds defaultSender) Send(endPoint EndPoint, data interface{}) error {
+func (ds defaultSender) Send(endPoint EndPoint, data any) error {
 	jsonData, err := json.Marshal(data)
 	if err != nil {
 		log.Error(err)

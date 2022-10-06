@@ -342,7 +342,7 @@ func insertTargetIntoGroup(tx *gorm.DB, t Target, gid int64) error {
 
 // UpdateTarget updates the given target information in the database.
 func UpdateTarget(tx *gorm.DB, target Target) error {
-	targetInfo := map[string]interface{}{
+	targetInfo := map[string]any{
 		"first_name": target.FirstName,
 		"last_name":  target.LastName,
 		"position":   target.Position,
