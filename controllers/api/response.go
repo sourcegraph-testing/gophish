@@ -10,7 +10,7 @@ import (
 
 // JSONResponse attempts to set the status code, c, and marshal the given interface, d, into a response that
 // is written to the given ResponseWriter.
-func JSONResponse(w http.ResponseWriter, d interface{}, c int) {
+func JSONResponse(w http.ResponseWriter, d any, c int) {
 	dj, err := json.MarshalIndent(d, "", "  ")
 	if err != nil {
 		http.Error(w, "Error creating JSON response", http.StatusInternalServerError)

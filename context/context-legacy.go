@@ -1,3 +1,4 @@
+//go:build !go1.7
 // +build !go1.7
 
 package context
@@ -8,11 +9,11 @@ import (
 	"github.com/gorilla/context"
 )
 
-func Get(r *http.Request, key interface{}) interface{} {
+func Get(r *http.Request, key any) any {
 	return context.Get(r, key)
 }
 
-func Set(r *http.Request, key, val interface{}) *http.Request {
+func Set(r *http.Request, key, val any) *http.Request {
 	if val == nil {
 		return r
 	}

@@ -38,7 +38,7 @@ type Result struct {
 	BaseRecipient
 }
 
-func (r *Result) createEvent(status string, details interface{}) (*Event, error) {
+func (r *Result) createEvent(status string, details any) (*Event, error) {
 	e := &Event{Email: r.Email, Message: status}
 	if details != nil {
 		dj, err := json.Marshal(details)

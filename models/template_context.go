@@ -74,7 +74,7 @@ func NewPhishingTemplateContext(ctx TemplateContext, r BaseRecipient, rid string
 
 // ExecuteTemplate creates a templated string based on the provided
 // template body and data.
-func ExecuteTemplate(text string, data interface{}) (string, error) {
+func ExecuteTemplate(text string, data any) (string, error) {
 	buff := bytes.Buffer{}
 	tmpl, err := template.New("template").Parse(text)
 	if err != nil {

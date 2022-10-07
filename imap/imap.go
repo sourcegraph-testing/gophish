@@ -23,7 +23,7 @@ type Client interface {
 	Login(username, password string) (cmd *imap.Command, err error)
 	Logout(timeout time.Duration) (cmd *imap.Command, err error)
 	Select(name string, readOnly bool) (mbox *imap.MailboxStatus, err error)
-	Store(seq *imap.SeqSet, item imap.StoreItem, value interface{}, ch chan *imap.Message) (err error)
+	Store(seq *imap.SeqSet, item imap.StoreItem, value any, ch chan *imap.Message) (err error)
 	Fetch(seqset *imap.SeqSet, items []imap.FetchItem, ch chan *imap.Message) (err error)
 }
 
