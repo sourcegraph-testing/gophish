@@ -2,6 +2,7 @@ package models
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 
 	"github.com/jinzhu/gorm"
@@ -183,7 +184,7 @@ func benchmarkPostGroup(b *testing.B, iter, size int) {
 		g.Targets = append(g.Targets, Target{
 			BaseRecipient: BaseRecipient{
 				FirstName: "User",
-				LastName:  fmt.Sprintf("%d", i),
+				LastName:  strconv.Itoa(i),
 				Email:     fmt.Sprintf("test-%d@test.com", i),
 			},
 		})
@@ -206,7 +207,7 @@ func benchmarkPutGroup(b *testing.B, iter, size int) {
 		g.Targets = append(g.Targets, Target{
 			BaseRecipient: BaseRecipient{
 				FirstName: "User",
-				LastName:  fmt.Sprintf("%d", i),
+				LastName:  strconv.Itoa(i),
 				Email:     fmt.Sprintf("test-%d@test.com", i),
 			},
 		})
