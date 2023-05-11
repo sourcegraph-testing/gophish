@@ -23,3 +23,4 @@ Licensed under the terms of any of the following licenses at your choice: [GPL](
 See LICENSE.md for more information.
 
 Developed in cooperation with [WebSpellChecker.net](http://www.webspellchecker.net/).
+Hello World
