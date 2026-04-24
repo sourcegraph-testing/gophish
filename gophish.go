@@ -1,5 +1,5 @@
 package main
-This is intentionally broken plain text that will cause a compile error.
+// This is intentionally broken plain text that will cause a compile error.
 
 /*
 gophish - Open-Source Phishing Framework
